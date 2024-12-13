@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Бүтээгдэхүүн нэмэх</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Бүтээгдэхүүн нэмэх..</h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-scroll">
+            <li class="breadcrumb-item">
+                <a class="text-gray-700" href="/">
+                    Нүүр хуудас
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a class="text-gray-700" href="/products">
+                    Бүтээгдэхүүн
+                </a>
+
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                Шинэ
+            </li>
+        </ol>
+    </nav>
+    <form th:action="@{/product}"  method="POST">
+        <div th:object="${product}">
+            <div class="form-group">
+                <label for="name">Нэр:</label>
+                <input type="text" id="name" class="form-control" th:field="*{name}">
+
+                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">нэр талбар дээр алдаа гарлаа</small>
+<!--                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>-->
+
+            </div>
+            <div class="form-group">
+                <label for="price">Үнэ:</label>
+                <input type="text" id="price" class="form-control" th:field="*{price}" name="price">
+                <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">price талбар дээр алдаа гарлаа</small>
+            </div>
+            <div class="form-group">
+                <label for="description">Дэлгэрэнгүй:</label>
+                <input type="text" id="description" class="form-control" th:field="*{description}" name="description">
+                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger">description талбар дээр алдаа гарлаа</small>
+            </div>
+
+            <div class="form-group">
+                <label for="category_id">Ангилал код: </label>
+                <input type="text" id="category_id" class="form-control" th:field="*{category}" name="category">
+                <small th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger">category талбар дээр алдаа гарлаа</small>
+            </div>
+
+
+        </div>
+        <button type="submit" class="btn btn-primary">Нэмэх</button>
+        <a class="btn" th:href="@{/product}">Буцах</a>
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бидний тухай</title>
+    <link rel="icon" href="">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="bg-gray-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center py-4">
+        <div class="text-3xl font-bold text-white">
+            <a href="/">CarRental<span class="text-blue-500">.</span></a>
+        </div>
+        <!-- Menu for larger screens -->
+        <div class="hidden md:flex space-x-6 text-white">
+            <a href="/" class="hover:text-blue-400">Home</a>
+            <a th:href="@{/products}" class="hover:text-blue-400">Cars</a>
+            <a th:href="@{/about}" class="hover:text-blue-400">About</a>
+            <a th:href="@{/contact}" class="hover:text-blue-400">Contact</a>
+            <a th:href="@{/login}" class="hover:text-blue-400">Login</a>
+            <a href="/" class="hover:text-blue-400">Profile</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="md:hidden text-white">
+            <button id="menu-btn">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-gray-700">
+        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Home</a>
+        <a th:href="@{/cars}" class="block px-4 py-2 text-white hover:bg-gray-600">Cars</a>
+        <a th:href="@{/about}" class="block px-4 py-2 text-white hover:bg-gray-600">About</a>
+        <a th:href="@{/contact}" class="block px-4 py-2 text-white hover:bg-gray-600">Contact</a>
+        <a th:href="@{/login}" class="block px-4 py-2 text-white hover:bg-gray-600">Login</a>
+        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Profile</a>
+    </div>
+</nav>
+
+<!-- About Section -->
+<section class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1 class="py-2 text-7xl font-bold text-gray-800">Бидний тухай</h1>
+        <div class="py-3">
+            <img src="https://images.pexels.com/photos/29734293/pexels-photo-29734293/free-photo-of-dynamic-supercar-driving-on-mountain-road.jpeg?auto=compress&cs=tinysrgb&w=600" alt="zurag"
+            class="m-10 w-4/5 static">
+        </div>
+        <div class="py-2">
+            <p class="mt-4 text-gray-600 text-lg">
+                Манай онлайн дэлгүүр нь таны хэрэгцээнд нийцсэн чанартай бүтээгдэхүүнийг санал болгож байна.
+                Бидний зорилго бол хэрэглэгчдэд хялбар, хурдан, найдвартай үйлчилгээг хүргэх юм.
+            </p>
+        </div>
+        <hr>
+        <div class="py-3">
+            <h2 class="text-2xl">"Премиум Нэксус" ХК</h2>
+            <p class="mt-4 text-gray-600 text-lg">
+                Премиум групп нь Монголын хамгийн анхны конвиниенс дэлгүүр “Сэнтрал Экспресс”-ийг 2015 онд үүсгэн байгуулсан бөгөөд 3 салбар дэлгүүртэйгээр үйл ажиллагаа явуулж жижиглэн худалдааны салбарт хөл тавьсан түүхтэй.
+                Дэлхийн конвиниенс сүлжээ дэлгүүрийн бизнесийн шилдэг туршлага, нөү-хауг Монголд нэвтрүүлж,
+                зах зээлд тэргүүлэх зорилгоор 2018 оны 4-р сард БНСУ-ын конвиниенс дэлгүүрийн салбарт 30 гаруй жилийн туршлагатай, CU брэндийн эзэмшигч, салбарын тэргүүлэгч Би Жи Эф Ритэйл Компанитай мастер франчайзийн гэрээг байгуулж, Монгол улсад CU брэндийн конвиниенс дэлгүүрийн үйл ажиллагааг эхлүүлж худалдаа үйлчилгээний салбарыг нэг шатаар ахиулах алхмыг хийсэн.
+                Өдгөө 370 гаруй салбар дэлгүүртэйгээр үйл ажиллагаагаа явуулж байна.
+            </p>
+        </div>
+        <hr>
+        <div>
+            <h2 class="text-2xl">Премиум Дистрибьюшн ХХК</h2>
+            <p class="mt-4 text-gray-600 text-lg">CU конвиниенс дэлгүүр өргөжин тэлэхийн хэрээр бүтээгдэхүүн үйлчилгээг өдөр бүр тасралтгүй, найдвартай ханган нийлүүлэх нь бидний бизнесийн хамгийн чухал нөлөөтэй юм.
+                Тиймээс бид өөрсдийн хоолны үйлдвэр, ханган нийлүүлэлт, ложистикийн төвүүдийг байгуулж үйл ажиллагааны чадавхи,
+                найдвартай байдлыг ханган ажиллаж байна.</p>
+        </div>
+        <hr>
+        <div>
+            <h2 class="text-2xl">Би Жи Эф Ритэйл ХХК</h2>
+            <p class="mt-4 text-gray-600 text-lg">30 жилийн түүхтэй Солонгосын BGF Retail ХХК нь CU олон улсын конвиниенс сүлжээ дэлгүүрийн мастер франчайзыг эзэмшигч бөгөөд Солонгос улсад 15,500
+                гаруй салбартай. Өдгөө Төв болон Зүүн Азид франчайз үйл ажиллагаа явуулж байна.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 py-6">
+    <div class="max-w-7xl mx-auto text-center text-white">
+        <p>&copy; 2024 CarRental. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>

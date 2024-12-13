@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Шинэ бүтээгдэхүүн</title>
+  </head>
+  <body>
+    <div id="main">
+      <div th:insert="header::header"></div>
+
+      <div id="centerColumn">
+        <p>Сагсанд нийт Х бүтээгдэхүүн байна</p>
+        <div id="actionBar">
+          <a href="#" class="bubble hMargin">Шинэчлэх</a>
+          <a href="#" class="bubble hMargin">|Худалдааг үргэлжлүүлэх</a>
+          <a href="#" class="bubble hMargin">|Тооцоо хийх</a>
+        </div>
+        <h4 id="subtotal">[ Нийт: xxx ]</h4>
+        <table id="cartTable">
+          <tr class="header">
+            <th>Бүтээгдэхүүн</th>
+            <th>Нэр</th>
+            <th>Үнэр</th>
+            <th>Тоо ширхэг</th>
+          </tr>
+          <tr>
+            <td class="lightBlue">
+              <img src="#" alt="Зураг" />
+            </td>
+            <td class="lightBlue">[ Бүтээгдэхүүн ]</td>
+            <td class="lightBlue">[ Үнэ ]</td>
+            <td class="lightBlue">
+              <form action="updateCart" method="post">
+                <input
+                  type="text"
+                  maxlength="2"
+                  size="2"
+                  value="1"
+                  name="Тоо"
+                />
+                <input type="submit" name="submit" value="Өөрчлөх" />
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="white">
+              <img src="#" alt="Зураг" />
+            </td>
+            <td class="white">[ Бүтээгдэхүүн ]</td>
+            <td class="white">[ Үнэ ]</td>
+            <td class="white">
+              <form action="updateCart" method="post">
+                <input
+                  type="text"
+                  maxlength="2"
+                  size="2"
+                  value="1"
+                  name="Тоо"
+                />
+                <input type="submit" name="submit" value="Өөрчлөх" />
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="lightBlue">
+              <img src="#" alt="Зураг" />
+            </td>
+            <td class="lightBlue">[ Бүтээгдэхүүн ]</td>
+            <td class="lightBlue">[ Үнэ ]</td>
+            <td class="lightBlue">
+              <form action="updateCart" method="post">
+                <input
+                  type="text"
+                  maxlength="2"
+                  size="2"
+                  value="1"
+                  name="Тоо"
+                />
+                <input type="submit" name="submit" value="Өөрчлөх" />
+              </form>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      [ Хөлний хэсгийн код ]
+    </div>
+  </body>
+</html>

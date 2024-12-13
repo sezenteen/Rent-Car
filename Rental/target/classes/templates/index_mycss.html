@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Онлайн дэлгүүр</title>
+    <link rel="stylesheet" media="screen" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div id="main">
+<!--    <div th:insert="header::header"></div>-->
+
+    <th:block th:include="~{fragments/header}"></th:block>
+
+    <div id="indexLeftColumn">
+        <div id="welcomeText">
+            <p>[ Мэндчилгээ хэсэг]</p>
+        </div>
+    </div>
+
+
+    <div id="indexRightColumn" >
+        <div class="categoryBox" th:each="category : ${categories}">
+            <a th:href="@{/products/{id}(id=${category.id})}" >
+                <span class="categoryLabelText" th:text="${category.name}"></span>
+
+            </a>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <hr/>
+        <p id="footerText">[ Хөлний хэсэг ]</p>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Харилцагчийн засах</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Харилцагчийн мэдээлэл засварлах</h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-scroll">
+            <li class="breadcrumb-item">
+                <a class="text-gray-700" href="/static">
+                    Нүүр хуудас
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a class="text-gray-700" href="/customers">
+                    Харилцагч
+                </a>
+
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                Засах
+            </li>
+        </ol>
+    </nav>
+    <form th:action="@{/customers/{id}(id=${customer.id})}" th:object="${customer}" method="post">
+        <div class="form-group">
+            <label for="name">Нэр:</label>
+            <input type="text" id="name" class="form-control" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" class="form-control" th:field="*{email}">
+        </div>
+        <div class="form-group">
+            <label for="phone">Утас:</label>
+            <input type="text" id="phone" class="form-control" th:field="*{phone}">
+        </div>
+        <div class="form-group">
+            <label for="address">Хаяг:</label>
+            <input type="text" id="address" class="form-control" th:field="*{address}">
+        </div>
+        <div class="form-group">
+            <label for="cityRegion">Бүс:</label>
+            <input type="text" id="cityRegion" class="form-control" th:field="*{cityRegion}">
+        </div>
+        <div class="form-group">
+            <label for="ccNumber">Бүсийн код:</label>
+            <input type="text" id="ccNumber" class="form-control" th:field="*{ccNumber}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Засварлах</button>
+        <a class="btn" th:href="@{/customers}">Буцах</a>
+    </form>
+</div>
+</body>
+</html>

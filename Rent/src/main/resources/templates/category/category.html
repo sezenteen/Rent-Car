@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div id="main">
+    <div th:insert="header::header"></div>
+    <div id="categoryLeftColumn">
+        <a th:each="category, i: ${categories}" th:href="@{/products/{id}(id=${category.id})}" class="categoryButton">
+            <div th:if="${(i.index+1) == select_category.getId()}">
+                <div class="categoryButton" id="selectedCategory">
+                    <span class="categoryText" th:text="${category.name}"></span>
+                </div>
+            </div>
+            <span th:unless="${i.index+1 == select_category.getId()}">
+                <span class="categoryText" th:text="${category.name}"></span>
+            </span>
+        </a>
+
+    </div>
+
+    <div id="categoryRightColumn">
+        <p id="categoryTitle" th:text="${select_category.getName()}">[ Сонгосон ангилал ]</p>
+
+        <table id="productTable">
+            <tr th:each=" product, i :${products}">
+                <td th:class="${i.odd}? 'lightBlue': 'white'" th:text="${i.index+1}"></td>
+                <td th:class="${i.odd}? 'lightBlue': 'white'">
+                    <img src="#" alt="Зураг"/>
+                </td>
+                <td th:class="${i.odd}? 'lightBlue': 'white'">
+                    <span th:text="${product.name}"></span>
+
+                    <br/>
+                    <span class="smallText" th:text="${product.description}"></span>
+                </td>
+                <td th:class="${i.odd}? 'lightBlue': 'white'" th:text="${product.price}">[ Үнэ ]</td>
+                <td th:class="${i.odd}? 'lightBlue': 'white'">
+                    <form action="#" method="post">
+                        <input type="submit" value="Худалдан авах"/>
+                    </form>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div id="footer">
+        <hr/>
+        <p id="footerText">[ Хөлний хэсэг ]</p>
+    </div>
+</div>
+</body>
+</html>

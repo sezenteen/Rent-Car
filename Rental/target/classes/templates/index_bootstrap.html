@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/output.css">
+</head>
+<body>
+
+<div class="container">
+    <h2 class="">Онлайн дэлгүүр</h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-scroll">
+            <li class="breadcrumb-item">
+                <a class="text-gray-700" href="/">
+                    Нүүр хуудас
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a class="text-gray-700" href="/customers">
+                    Харилцагч
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a class="text-gray-700" href="/products">
+                    Бүтээгдэхүүн
+                </a>
+            </li>
+        </ol>
+    </nav>
+    <div th:each="category : ${categories}" style="padding-bottom: 10px">
+        <a class="btn btn-primary" th:href="@{/products/{id}(id=${category.id})}" th:text="${category.name}"></a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Нэр</th>
+            <th>Үнэ</th>
+            <th>Дэлгэрэнгүй</th>
+            <th>Үүсгэсэн огноо</th>
+            <th>Ангилал</th>
+            <th>Үйлдэл</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product:${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.last_update}"></td>
+            <td th:text="${product.category.getName()}"></td>
+
+
+            <td>
+                <a class="btn btn-primary" th:href="@{/products/edit/{id}(id=${product.id})}">Edit</a>
+                <a class="btn btn-danger" th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

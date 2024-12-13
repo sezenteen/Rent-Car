@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн дэлгүүр</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<!-- Navbar -->
+<nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <div class="text-4xl font-bold text-gray-800">Онлайн дэлгүүр</div>
+
+            <!-- Menu for larger screens -->
+            <div class="hidden md:flex space-x-6">
+
+                <a href="/" class="text-gray-800 hover:text-gray-600">Нүүр хуудас</a>
+                <div th:if="${currentUser != null }">
+                    <a href="/" class="text-gray-800 hover:text-gray-600">user</a>
+                </div>
+                <div sec:authorize="hasRole('Admin')">
+                    <a href="/" class="text-gray-800 hover:text-gray-600">Admin</a>
+                </div>
+               <div sec:authorize="isAuthenticated()">
+                   <a th:href="@{/users/profile}" class="text-gray-800 hover:text-gray-600">Профайл</a>
+                   <a th:href="@{/logout}" class="text-gray-800 hover:text-gray-600">Гарах</a>
+
+               </div>
+                <a href="/about" class="text-gray-800 hover:text-gray-600">Бидний тухай</a>
+
+                <a th:href="@{/login}" class="text-gray-800 hover:text-gray-600">Нэвтрэх</a>
+                <a th:href="@{/register}" class="text-gray-800 hover:text-gray-600">Бүртгүүлэх</a>
+            </div>
+
+            <!-- Hamburger Menu for smaller screens -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+
+        <a href="/" class="text-gray-800 hover:text-gray-600">Нүүр хуудас</a>
+        <div th:if="${currentUser != null }">
+            <a href="/" class="text-gray-800 hover:text-gray-600">user</a>
+        </div>
+        <div sec:authorize="hasRole('Admin')">
+            <a href="/" class="text-gray-800 hover:text-gray-600">user</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{/users/profile}" class="text-gray-800 hover:text-gray-600">Профайл</a>
+            <a th:href="@{/logout}" class="text-gray-800 hover:text-gray-600">Гарах</a>
+
+        </div>
+        <a href="/about" class="text-gray-800 hover:text-gray-600">Бидний тухай</a>
+
+        <a th:href="@{/login}" class="text-gray-800 hover:text-gray-600">Нэвтрэх</a>
+        <a th:href="@{/register}" class="text-gray-800 hover:text-gray-600">Бүртгүүлэх</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl font-bold text-gray-800">Манай онлайн дэлгүүрт тавтай морилно уу!</h1>
+        <p class="mt-4 text-gray-600">Хамгийн сүүлийн үеийн бүтээгдэхүүнийг олж аваарай!</p>
+        <a href="/products" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500">Бүтээгдэхүүн</a>
+    </div>
+</section>
+
+<!-- Featured Products -->
+
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <!-- Section Title -->
+        <h2 class="text-4xl font-bold text-center text-gray-900 text-blue">Бүтээгдэхүүний ангилалууд</h2>
+        <p class="mt-4 text-center text-gray-600 text-lg">Тухайн ангилал дахь бүх бүтээгдэхүүнийг сонирхоорй</p>
+        <!-- Product Categories Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12">
+            <!-- Category 1 -->
+            <div class="relative group" th:each="category : ${categories}">
+                <img src="https://via.placeholder.com/300" alt="Category Image" class="w-full h-40 object-cover rounded-lg">
+                <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    <a th:href="@{/products/{id}(id=${category.id})}" class="text-white font-semibold text-lg" th:text="${category.name}"></a>
+                </div>
+                <h3 class="mt-4 text-xl font-semibold text-gray-800 text-center" th:text="${category.name}" ></h3>
+            </div>
+
+            <!-- Add more categories here -->
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="bg-gray-800 py-6">
+    <div class="max-w-7xl mx-auto text-center text-white">
+        <p>&copy; 2024 Online Shop. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- JavaScript for Toggle Menu -->
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
