@@ -16,12 +16,12 @@
         </div>
         <!-- Menu for larger screens -->
         <div class="hidden md:flex space-x-6 text-white">
-            <a href="/" class="hover:text-blue-400">Home</a>
-            <a th:href="@{/products}" class="hover:text-blue-400">Cars</a>
-            <a th:href="@{/about}" class="hover:text-blue-400">About</a>
-            <a th:href="@{/contact}" class="hover:text-blue-400">Contact</a>
-            <a th:href="@{/login}" class="hover:text-blue-400">Login</a>
-            <a href="/" class="hover:text-blue-400">Profile</a>
+            <a th:href="@{/}" class="hover:text-blue-400">Нүүр хуудас</a>
+            <a th:href="@{/products}" class="hover:text-blue-400">Машин</a>
+            <a href="/" class="hover:text-blue-400">Бидний тухай</a>
+            <a th:href="@{/contact}" class="hover:text-blue-400">Холбоо барих</a>
+            <a th:href="@{/login}" class="hover:text-blue-400">Нэвтрэх</a>
+            <a href="/" class="hover:text-blue-400">Хэрэглэгч</a>
         </div>
         <!-- Hamburger Menu -->
         <div class="md:hidden text-white">
@@ -33,13 +33,13 @@
         </div>
     </div>
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden bg-gray-700">
-        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Home</a>
-        <a th:href="@{/cars}" class="block px-4 py-2 text-white hover:bg-gray-600">Cars</a>
-        <a th:href="@{/about}" class="block px-4 py-2 text-white hover:bg-gray-600">About</a>
-        <a th:href="@{/contact}" class="block px-4 py-2 text-white hover:bg-gray-600">Contact</a>
-        <a th:href="@{/login}" class="block px-4 py-2 text-white hover:bg-gray-600">Login</a>
-        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Profile</a>
+    <div id="mobile-menu" class="hidden bg-zinc-800">
+        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Нүүр хуудас</a>
+        <a th:href="@{/cars}" class="block px-4 py-2 text-white hover:bg-gray-600">Машин</a>
+        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Бидний тухай</a>
+        <a th:href="@{/contact}" class="block px-4 py-2 text-white hover:bg-gray-600">Холбоо барих</a>
+        <a th:href="@{/login}" class="block px-4 py-2 text-white hover:bg-gray-600">Нэвтрэх</a>
+        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Хэрэглэгч</a>
     </div>
 </nav>
 
@@ -49,9 +49,9 @@
         <section class="relative py-2 bg-cover bg-center h-screen" style="background-image: url('https://images.pexels.com/photos/2127038/pexels-photo-2127038.jpeg?auto=compress&cs=tinysrgb&w=600');">
             <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
             <div class="relative max-w-7xl mx-auto px-4 text-center text-white flex flex-col justify-center h-full">
-                <h1 class="text-5xl font-extrabold">Drive Your Dream Car Today</h1>
-                <p class="mt-4 text-lg">Explore the best selection of rental cars at unbeatable prices.</p>
-                <a href="/cars" class="mt-6 rounded-full inline-block px-8 py-3 bg-gradient-to-r from-zinc-600 text-white text-lg font-semibold hover:bg-gray-300">Browse Cars</a>
+                <h1 class="text-5xl font-extrabold">Мөрөөдлийн машинаа жолоод</h1>
+                <p class="mt-4 text-lg">Өндөр чанар, таатай үнэ</p>
+                <a href="/cars" class="mt-6 rounded-full inline-block px-8 py-3 bg-gradient-to-r from-zinc-600 text-white text-lg font-semibold hover:bg-gray-300">Үзэх</a>
                 <h1 class="pt-20 text-4xl font-extrabold">Бидний тухай</h1>
                 <div class="pt-8 w-12 h-12 mx-auto text-zinc-500 mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -61,17 +61,18 @@
                 </div>                  
             </div>
         </section>
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="py-2">
-                <p class="mt-4 text-gray-600 text-lg">
-                    Манай онлайн дэлгүүр нь таны хэрэгцээнд нийцсэн чанартай бүтээгдэхүүнийг санал болгож байна.
-                    Бидний зорилго бол хэрэглэгчдэд хялбар, хурдан, найдвартай үйлчилгээг хүргэх юм.
+        <div class="max-w-7xl mx-auto px-4 text-center font-sans">
+            <div class="py-8 text-justify">
+                <p class="mt-4 text-gray-600 text-2xl font-extralight">
+                    Манай компани 2018 оноос үйл ажиллагаагаа тогтвортой явуулж ирсэн. Бид танд баталгаатай бүтээгдэхүүнийг таны хэрэглээнд тааруулан үйлчлэх болно. Мөн бид хамтрагч байгуулгуудтайгаа үргэлж
+                    шинэ урамшуулал, хөнгөлөлт зэргийг явуулдаг тул та өөрийн зардалаа хэмнэх олон боломжтой.
                 </p>
             </div>
             <hr>
-            <div class="py-3">
-                <h2 class="text-2xl">"Премиум Нэксус" ХК</h2>
-                <p class="mt-4 text-gray-600 text-lg">
+            <h1 class="text-4xl font-extrabold py-8">Хамтрагч байгуулгууд</h1>
+            <div class="py-8 text-justify">
+                <h2 class="text-2xl text-center">"Премиум Нэксус" ХК</h2>
+                <p class="mt-4 text-gray-600 text-2xl font-extralight">
                     Премиум групп нь Монголын хамгийн анхны конвиниенс дэлгүүр “Сэнтрал Экспресс”-ийг 2015 онд үүсгэн байгуулсан бөгөөд 3 салбар дэлгүүртэйгээр үйл ажиллагаа явуулж жижиглэн худалдааны салбарт хөл тавьсан түүхтэй.
                     Дэлхийн конвиниенс сүлжээ дэлгүүрийн бизнесийн шилдэг туршлага, нөү-хауг Монголд нэвтрүүлж,
                     зах зээлд тэргүүлэх зорилгоор 2018 оны 4-р сард БНСУ-ын конвиниенс дэлгүүрийн салбарт 30 гаруй жилийн туршлагатай, CU брэндийн эзэмшигч, салбарын тэргүүлэгч Би Жи Эф Ритэйл Компанитай мастер франчайзийн гэрээг байгуулж, Монгол улсад CU брэндийн конвиниенс дэлгүүрийн үйл ажиллагааг эхлүүлж худалдаа үйлчилгээний салбарыг нэг шатаар ахиулах алхмыг хийсэн.
@@ -79,16 +80,16 @@
                 </p>
             </div>
             <hr>
-            <div>
-                <h2 class="text-2xl">Премиум Дистрибьюшн ХХК</h2>
-                <p class="mt-4 text-gray-600 text-lg">CU конвиниенс дэлгүүр өргөжин тэлэхийн хэрээр бүтээгдэхүүн үйлчилгээг өдөр бүр тасралтгүй, найдвартай ханган нийлүүлэх нь бидний бизнесийн хамгийн чухал нөлөөтэй юм.
+            <div class="py-8 text-justify">
+                <h2 class="text-2xl text-center">Премиум Дистрибьюшн ХХК</h2>
+                <p class="mt-4 text-gray-600 text-2xl font-extralight">CU конвиниенс дэлгүүр өргөжин тэлэхийн хэрээр бүтээгдэхүүн үйлчилгээг өдөр бүр тасралтгүй, найдвартай ханган нийлүүлэх нь бидний бизнесийн хамгийн чухал нөлөөтэй юм.
                     Тиймээс бид өөрсдийн хоолны үйлдвэр, ханган нийлүүлэлт, ложистикийн төвүүдийг байгуулж үйл ажиллагааны чадавхи,
                     найдвартай байдлыг ханган ажиллаж байна.</p>
             </div>
             <hr>
-            <div>
-                <h2 class="text-2xl">Би Жи Эф Ритэйл ХХК</h2>
-                <p class="mt-4 text-gray-600 text-lg">30 жилийн түүхтэй Солонгосын BGF Retail ХХК нь CU олон улсын конвиниенс сүлжээ дэлгүүрийн мастер франчайзыг эзэмшигч бөгөөд Солонгос улсад 15,500
+            <div class="py-8 text-justify">
+                <h2 class="text-2xl text-center">Би Жи Эф Ритэйл ХХК</h2>
+                <p class="mt-4 text-gray-600 text-2xl font-extralight">30 жилийн түүхтэй Солонгосын BGF Retail ХХК нь CU олон улсын конвиниенс сүлжээ дэлгүүрийн мастер франчайзыг эзэмшигч бөгөөд Солонгос улсад 15,500
                     гаруй салбартай. Өдгөө Төв болон Зүүн Азид франчайз үйл ажиллагаа явуулж байна.
                 </p>
             </div>

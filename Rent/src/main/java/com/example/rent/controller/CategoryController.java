@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -22,12 +23,11 @@ public class CategoryController {
     }
 
     // List all categories
-    @GetMapping("/categories")
-    public ModelAndView listCategories(ModelAndView modelAndView) {
+    @GetMapping
+    public String showCategories(Model model) {
         List<Category> categories = categoryService.getAllCategories();
-        modelAndView.addObject("categories", categories);
-        modelAndView.setViewName("category/categories");
-        return modelAndView;
+        model.addAttribute("categories", categories);
+        return "categories"; // Refers to a Thymeleaf template `categories.html`
     }
 
     // Show category by ID

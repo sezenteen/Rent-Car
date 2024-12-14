@@ -48,7 +48,7 @@
     <div class="relative max-w-7xl mx-auto px-4 text-center text-white flex flex-col justify-center h-full">
         <h1 class="text-5xl font-extrabold">Drive Your Dream Car Today</h1>
         <p class="mt-4 text-lg">Explore the best selection of rental cars at unbeatable prices.</p>
-        <a href="/cars" class="mt-6 rounded-full inline-block px-8 py-3 bg-gradient-to-r from-zinc-600 text-white text-lg font-semibold hover:bg-gray-300">Browse Cars</a>
+        <a th:href="@{/products}" class="mt-6 rounded-full inline-block px-8 py-3 bg-gradient-to-r from-zinc-600 text-white text-lg font-semibold hover:bg-gray-300">Browse Cars</a>
     </div>
 </section>
 
@@ -86,25 +86,24 @@
     </div>
 </section>
 
-<!-- Featured Cars -->
+<!-- Redesigned Featured Products Section -->
 <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-800">Explore Our Cars</h2>
-        <p class="mt-4 text-center text-gray-600 text-lg">Find a car that suits your needs.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12">
-            <!-- Car 1 -->
-            <div class="bg-gray-100 rounded-lg shadow-lg">
-                <img src="https://images.pexels.com/photos/18108322/pexels-photo-18108322/free-photo-of-3d-3d-render.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Car" class="w-full h-40 object-cover rounded-t-lg">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Luxury Sedan</h3>
-                    <p class="text-gray-600">Starting at $45/day</p>
-                    <a href="/cars/1" class="mt-4 inline-block px-4 py-2 bg-zinc-500 rounded-lg text-white text-sm font-semibold hover:bg-zinc-800">View Details</a>
-                </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12">
+        <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden" th:each="category : ${categories}">
+            <img th:src="${category.imageUrl}" alt="Category Image" class="w-full h-40 object-cover">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800" th:text="${category.name}"></h3>
+                <p class="text-gray-600">Explore all products</p>
+                <a th:href="@{/products/{id}(id=${category.id})}" class="mt-4 inline-block px-4 py-2 bg-zinc-400 rounded-lg text-white text-sm font-semibold hover:bg-zinc-800">
+                    View Products
+                </a>
             </div>
-            <!-- Repeat similar structure for other cars -->
         </div>
     </div>
 </section>
+
+
+
 
 <!-- Footer -->
 <footer class="bg-zinc-800 py-6">

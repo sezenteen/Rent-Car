@@ -12,6 +12,19 @@ import jakarta.validation.constraints.NotEmpty;
 public class Category extends BaseEntity{
 
     private String name;
+    @NotBlank(message = "Image URL is required!")
+    @Column(name = "image_url", length = 255) // Matches database column name
+    private String imageUrl;
+
+
+    public Category(String name, String imageUrl) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+    }
+
+    public Category() {
+
+    }
 
     @NotBlank
     @NotEmpty(message = "Барааны нэр оруулна уу!")
@@ -22,5 +35,13 @@ public class Category extends BaseEntity{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

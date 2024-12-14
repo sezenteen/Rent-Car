@@ -13,7 +13,6 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
 
     public CategoryServiceImpl(CategoryRepository categoryRepository) {
-
         this.categoryRepository = categoryRepository;
     }
 
@@ -24,6 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
+    // Fetch all categories from the database
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }

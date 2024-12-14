@@ -7,13 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig {
 
     private final UserService userService;
@@ -26,25 +24,32 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(auth ->
-                        auth
-                                .requestMatchers("/register", "/login", "/products/*", "/css/**", "/img/**", "/js/**").permitAll()
-                                .requestMatchers("/users/**").authenticated()
-                                .anyRequest().authenticated()
+                .authorizeHttpRequests(auth -> auth
+                        // Allow public access to specific paths
+                        .requestMatchers(
+                                "/register",
+                                "/login",
+                                "/products/**",  // Ensure public product pages
+                                "/images/**",    // Serve static images
+                                "/css/**",       // Serve static CSS
+                                "/js/**",        // Serve static JavaScript
+                                "/"
+                        ).permitAll()
+                        // Restrict access to user-specific pages
+                        .requestMatchers("/users/**").authenticated()
+                        .anyRequest().authenticated() // Enforce authentication for any other requests
                 )
-                .formLogin(form ->
-                        form
-                                .loginPage("/login")
-                                .defaultSuccessUrl("/", true)
-                                .permitAll()
+                .formLogin(form -> form
+                        .loginPage("/login")         // Custom login page
+                        .defaultSuccessUrl("/", true) // Redirect to homepage on login success
+                        .permitAll()
                 )
-                .logout(logout ->
-                        logout
-                                .logoutUrl("/logout")
-                                .logoutSuccessUrl("/")
-                                .invalidateHttpSession(true)
-                                .deleteCookies("JSESSIONID")
-                                .permitAll()
+                .logout(logout -> logout
+                        .logoutUrl("/logout")         // Custom logout URL
+                        .logoutSuccessUrl("/")       // Redirect to homepage on logout
+                        .invalidateHttpSession(true) // Invalidate session
+                        .deleteCookies("JSESSIONID") // Delete session cookie
+                        .permitAll()
                 );
         return http.build();
     }
@@ -53,7 +58,9 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        authenticationManagerBuilder
+                .userDetailsService(userService)
+                .passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder.build();
     }
 
@@ -62,4 +69,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
-
