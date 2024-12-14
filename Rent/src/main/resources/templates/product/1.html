@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CarRental</title>
+</head>
+<body>
+<nav class="bg-zinc-800 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 flex justify-between items-center py-4">
+    <div class="text-3xl font-bold text-white">
+      <a href="/">CarRental<span class="text-red-500">.</span></a>
+    </div>
+    <!-- Menu for larger screens -->
+    <div class="hidden md:flex space-x-6 text-white">
+      <a href="/" class="hover:text-blue-400">Home</a>
+      <a th:href="@{/products}" class="hover:text-blue-400">Cars</a>
+      <a th:href="@{/about}" class="hover:text-blue-400">About</a>
+      <a th:href="@{/contact}" class="hover:text-blue-400">Contact</a>
+      <a th:href="@{/login}" class="hover:text-blue-400">Login</a>
+      <a href="/" class="hover:text-blue-400">Profile</a>
+    </div>
+    <!-- Hamburger Menu -->
+    <div class="md:hidden text-white">
+      <button id="menu-btn">
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden bg-gray-700">
+    <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Home</a>
+    <a th:href="@{/cars}" class="block px-4 py-2 text-white hover:bg-gray-600">Cars</a>
+    <a th:href="@{/about}" class="block px-4 py-2 text-white hover:bg-gray-600">About</a>
+    <a th:href="@{/contact}" class="block px-4 py-2 text-white hover:bg-gray-600">Contact</a>
+    <a th:href="@{/login}" class="block px-4 py-2 text-white hover:bg-gray-600">Login</a>
+    <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Profile</a>
+  </div>
+</nav>
+
+
+</body>
+</html>

@@ -88,7 +88,7 @@
 
 <!-- Redesigned Featured Products Section -->
 <section class="py-16 bg-white">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mt-12">
         <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden" th:each="category : ${categories}">
             <img th:src="${category.imageUrl}" alt="Category Image" class="w-full h-40 object-cover">
             <div class="p-4">

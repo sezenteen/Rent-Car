@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+<nav class="bg-zinc-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center py-4">
+        <div class="text-3xl font-bold text-white">
+            <a href="/">CarRental<span class="text-red-500">.</span></a>
+        </div>
+        <!-- Menu for larger screens -->
+        <div class="hidden md:flex space-x-6 text-white">
+            <a href="/" class="hover:text-zinc-400">Home</a>
+            <a th:href="@{/products}" class="hover:text-zinc-400">Cars</a>
+            <a th:href="@{/about}" class="hover:text-zinc-400">About</a>
+            <a th:href="@{/contact}" class="hover:text-zinc-400">Contact</a>
+            <a href="/" class="hover:text-zinc-400">Profile</a>
+            <a href="/logout" class="text-red-500 hover:text-red-700">Logout</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="md:hidden text-white">
+            <button id="menu-btn">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-zinc-800">
+        <a href="/" class="block px-4 py-2 text-white hover:bg-zinc-600">Home</a>
+        <a th:href="@{/cars}" class="block px-4 py-2 text-white hover:bg-zinc-600">Cars</a>
+        <a th:href="@{/about}" class="block px-4 py-2 text-white hover:bg-zinc-600">About</a>
+        <a th:href="@{/contact}" class="block px-4 py-2 text-white hover:bg-zinc-600">Contact</a>
+        <a href="/" class="block px-4 py-2 text-white hover:bg-zinc-600">Profile</a>
+        <a href="/logout" class="text-red-500 hover:text-red-700">Logout</a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+
+    <!-- Header -->
+    <header class="bg-white shadow px-6 py-4">
+        <h1 class="text-center text-2xl font-bold text-gray-800">Admin Dashboard</h1>
+    </header>
+
+    <!-- Stats Section -->
+    <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white shadow rounded-lg p-4">
+            <h3 class="text-gray-700 text-lg font-semibold">Total Cars</h3>
+            <p class="text-2xl font-bold text-gray-900">120</p>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+            <h3 class="text-gray-700 text-lg font-semibold">Total Categories</h3>
+            <p class="text-2xl font-bold text-gray-900">6</p>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+            <h3 class="text-gray-700 text-lg font-semibold">Pending Payments</h3>
+            <p class="text-2xl font-bold text-gray-900">5</p>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+            <h3 class="text-gray-700 text-lg font-semibold">Pending Rents</h3>
+            <p class="text-2xl font-bold text-gray-900">3</p>
+        </div>
+    </div>
+
+<!-- Main Content -->
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">Бүтээгдэхүүний жагсаалт</h2>
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="flex space-x-2 text-gray-600">
+            <li>
+                <a href="/" class="hover:text-gray-800">Нүүр хуудас</a>
+            </li>
+            <li>/</li>
+            <li class="text-gray-800 font-semibold">Бүтээгдэхүүн</li>
+        </ol>
+    </nav>
+    <a class="bg-zinc-500 text-white px-4 py-2 rounded-lg hover:bg-zinc-600" th:href="@{/products/new}">Бүтээгдэхүүн нэмэх</a>
+    <div class="overflow-x-auto mt-6">
+        <table class="table-auto w-full bg-white shadow-lg rounded-lg">
+            <thead class="bg-gray-200">
+            <tr class="text-left">
+                <th class="px-4 py-2">ID</th>
+                <th class="px-4 py-2">Нэр</th>
+                <th class="px-4 py-2">Үнэ</th>
+                <th class="px-4 py-2">Дэлгэрэнгүй</th>
+                <th class="px-4 py-2">Үүсгэсэн огноо</th>
+                <th class="px-4 py-2">Ангилал</th>
+                <th class="px-4 py-2">Үйлдэл</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}" class="border-t hover:bg-gray-100">
+                <td class="px-4 py-2" th:text="${product.id}"></td>
+                <td class="px-4 py-2" th:text="${product.name}"></td>
+                <td class="px-4 py-2" th:text="${product.price}"></td>
+                <td class="px-4 py-2" th:text="${product.description}"></td>
+                <td class="px-4 py-2" th:text="${product.last_update}"></td>
+                <td class="px-4 py-2" th:text="${product.category.getName()}"></td>
+                <td class="px-4 py-2">
+                    <a class="bg-zinc-500 text-white px-3 py-1 rounded-lg hover:bg-zinc-600" 
+                       th:href="@{/products/edit/{id}(id=${product.id})}">Edit</a>
+                    <a class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600" 
+                       th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pt-8">
+        <table class="table-auto w-full bg-white shadow-lg rounded-lg">
+            <thead class="bg-gray-200">
+                <tr class="text-left">
+                    <th class="px-4 py-2">Payment ID</th>
+                    <th class="px-4 py-2">Нэр</th>
+                    <th class="px-4 py-2">Төлөх</th>
+                    <th class="px-4 py-2">Статус</th>
+                    <th class="px-4 py-2">Үйлдэл</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="payment : ${pendingPayments}" class="border-t hover:bg-gray-100">
+                    <td class="px-4 py-2" th:text="${payment.id}"></td>
+                    <td class="px-4 py-2" th:text="${payment.customer.name}"></td>
+                    <td class="px-4 py-2" th:text="${payment.amount}"></td>
+                    <td class="px-4 py-2" th:text="${payment.status}"></td>
+                    <td class="px-4 py-2">
+                        <a href="/admin/payments/approve/{id}" 
+                           class="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600">Approve</a>
+                        <a href="/admin/payments/cancel/{id}"
+                            class="bg-red-500 text-white px-3 py-1 rounded-lg">Cancel</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</main>
+</body>
+<!-- Footer -->
+<footer class="bg-zinc-800 py-6">
+    <div class="max-w-7xl mx-auto text-center text-white">
+        <p>&copy; 2024 CarRental. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</html>

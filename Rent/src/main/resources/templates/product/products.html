@@ -44,17 +44,17 @@
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 py-8">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">Бүтээгдэхүүний жагсаалт</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Машины жагсаалт</h2>
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="flex space-x-2 text-gray-600">
                 <li>
                     <a href="/" class="hover:text-gray-800">Нүүр хуудас</a>
                 </li>
                 <li>/</li>
-                <li class="text-gray-800 font-semibold">Бүтээгдэхүүн</li>
+                <li class="text-gray-800 font-semibold">Машин</li>
             </ol>
         </nav>
-        <a class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" th:href="@{/products/new}">Бүтээгдэхүүн нэмэх</a>
+        <a class="bg-zinc-500 text-white px-4 py-2 rounded-lg hover:bg-zinc-600" th:href="@{/products/new}">Машин нэмэх</a>
         <div class="overflow-x-auto mt-6">
             <table class="table-auto w-full bg-white shadow-lg rounded-lg">
                 <thead class="bg-gray-200">
@@ -77,7 +77,7 @@
                     <td class="px-4 py-2" th:text="${product.last_update}"></td>
                     <td class="px-4 py-2" th:text="${product.category.getName()}"></td>
                     <td class="px-4 py-2">
-                        <a class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600" 
+                        <a class="bg-zinc-500 text-white px-3 py-1 rounded-lg hover:bg-zinc-600" 
                            th:href="@{/products/edit/{id}(id=${product.id})}">Edit</a>
                         <a class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600" 
                            th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
@@ -93,11 +93,6 @@
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="text-lg font-bold mb-2">CarRental<span class="text-red-500">.</span></div>
             <p>&copy; 2024 CarRental. All rights reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="#" class="hover:text-red-500">Privacy Policy</a>
-                <a href="#" class="hover:text-red-500">Terms of Service</a>
-                <a href="#" class="hover:text-red-500">Contact</a>
-            </div>
         </div>
     </footer>
 

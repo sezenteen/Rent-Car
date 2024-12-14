@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-
 public class CommandLineRunnerImplement implements CommandLineRunner {
     private final CustomerService customerService;
 

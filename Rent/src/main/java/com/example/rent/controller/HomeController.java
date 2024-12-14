@@ -24,6 +24,16 @@ public class HomeController {
         model.addAttribute("products", productService.getAllProducts());
         return "index";
     }
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/contact")
+    public String contactPage() {
+        return "contact";
+    }
 //    @GetMapping("/test")
 //    public ModelAndView test() {
 //        ModelAndView modelAndView = new ModelAndView("test");
