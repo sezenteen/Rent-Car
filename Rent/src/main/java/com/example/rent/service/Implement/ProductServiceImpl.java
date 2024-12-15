@@ -10,16 +10,22 @@ import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    @Override
-    public Object findByCategoryId(Long id) {
-        return null;
-    }
+
 
     private final ProductRepository productRepository;
+
+
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository= productRepository;
     }
+
+
+    @Override
+    public List<Product> findByCategoryId(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId);
+    }
+
 
     @Override
     public List<Product> findByProductDescription(String name) {

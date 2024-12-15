@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
+    List<Product> findByCategoryId(Long categoryId);
     List<Product> findByProductDescription(String name);
     List<Product> getAllProducts();
     Product createProduct(Product product);
@@ -14,6 +15,6 @@ public interface ProductService {
     Product updateProduct(Product product);
     String deleteProductById(Long id);
 
-    Object findByCategoryId(Long id);
+//    Object findByCategoryId(Long id);
 }
 

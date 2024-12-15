@@ -31,17 +31,33 @@ class ProductController {
         return modelAndView;
     }
 
+//    @GetMapping("/products/{id}")
+//    public String productByCategory(@PathVariable("id") Long id, Model model) {
+//        Optional<Optional<Category>> category = Optional.ofNullable(categoryService.getCategoryById(id));
+//        if (category.isEmpty()) {
+//            return "redirect:/products?error=CategoryNotFound";
+//        }
+//        model.addAttribute("select_category", category.get());
+//        model.addAttribute("categories", categoryService.getAllCategories());
+//        model.addAttribute("products", productService.findByCategoryId(id));
+//        return "/category/category";
+//    }
+
     @GetMapping("/products/{id}")
-    public String productByCategory(@PathVariable("id") Long id, Model model) {
-        Optional<Optional<Category>> category = Optional.ofNullable(categoryService.getCategoryById(id));
+    public String productsByCategory(@PathVariable("id") Long id, Model model) {
+        Optional<Category> category = categoryService.getCategoryById(id);
         if (category.isEmpty()) {
+            System.out.println("Category not found for ID: " + id);
             return "redirect:/products?error=CategoryNotFound";
         }
+        System.out.println("Category found: " + category.get().getName());
         model.addAttribute("select_category", category.get());
         model.addAttribute("categories", categoryService.getAllCategories());
         model.addAttribute("products", productService.findByCategoryId(id));
-        return "/category/category";
+        return "/category/products_by_category";
     }
+
+
 
     @GetMapping("/products/new")
     public String createProductForm(Model model) {

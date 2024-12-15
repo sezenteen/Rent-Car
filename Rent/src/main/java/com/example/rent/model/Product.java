@@ -1,9 +1,9 @@
 package com.example.rent.model;
-import jakarta.validation.constraints.NotEmpty;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import jakarta.persistence.*;
 
@@ -12,18 +12,20 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name="product")
-public class Product extends BaseEntity{
+@Table(name = "product")
+public class Product extends BaseEntity {
+
     private String name;
     private BigDecimal price;
     private String description;
+    private String imageUrl; // New field for product images
     private Date last_update;
     private Category category;
-    Set<OrderedProduct> orderedProducts;
+    private Set<OrderedProduct> orderedProducts;
 
     @NotEmpty(message = "Бүтээгдэхүүний нэр оруулна уу!")
     @Size(min = 2, max = 45, message = "Бүтээгдэхүүний нэр 2-оос 45 хүртэлх тэмдэгч байна!")
-    @Column(name = "name", length =45, nullable = false )
+    @Column(name = "name", length = 45, nullable = false)
     public String getName() {
         return name;
     }
@@ -33,7 +35,7 @@ public class Product extends BaseEntity{
     }
 
     @NotNull(message = "Бүтээгдэхүүний үнэ оруулна уу!")
-    @Column(name="price", nullable = false , precision = 9, scale = 2)
+    @Column(name = "price", nullable = false, precision = 9, scale = 2)
     public BigDecimal getPrice() {
         return price;
     }
@@ -53,8 +55,18 @@ public class Product extends BaseEntity{
         this.description = description;
     }
 
+    @NotEmpty(message = "Бүтээгдэхүүний зураг оруулна уу!")
+    @Column(name = "image_url", nullable = false, length = 255)
+    public String getImageUrl() { // Getter for imageUrl
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) { // Setter for imageUrl
+        this.imageUrl = imageUrl;
+    }
+
     @Basic(optional = false)
-    @Column(name="last_update", insertable = false, updatable = false,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "last_update", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     public Date getLast_update() {
         return last_update;
@@ -66,7 +78,7 @@ public class Product extends BaseEntity{
 
     @NotNull(message = "Бүтээгдэхүүний ангилал сонгоно уу")
     @ManyToOne
-    @JoinColumn(name="category_id", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     public Category getCategory() {
         return category;
     }
