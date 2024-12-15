@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products by Category</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+<!-- Navbar (reuse your navbar component) -->
+<nav class="bg-zinc-800 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="text-3xl font-bold">
+            <a href="/" class="hover:text-red-500">CarRental<span class="text-red-500">.</span></a>
+        </div>
+        <div class="hidden md:flex space-x-6">
+            <a href="/" class="hover:text-blue-400">Home</a>
+            <a th:href="@{/products}" class="hover:text-blue-400">Cars</a>
+            <a th:href="@{/about}" class="hover:text-blue-400">About</a>
+            <a th:href="@{/contact}" class="hover:text-blue-400">Contact</a>
+            <a th:href="@{/login}" class="hover:text-blue-400">Login</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<header class="bg-gray-100 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1 class="text-3xl font-bold text-gray-800" th:text="'Products in ' + ${select_category.name}"></h1>
+        <p class="text-gray-600 mt-2">Explore the wide range of vehicles available under this category.</p>
+    </div>
+</header>
+
+<!-- Products Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div th:each="product : ${products}" class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                <!-- Product Image -->
+                <img th:src="${product.imageUrl}" alt="Product Image" class="w-full h-40 object-cover">
+                <!-- Product Details -->
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800" th:text="${product.name}"></h3>
+                    <p class="text-gray-600" th:text="${product.description}"></p>
+                    <p class="text-gray-800 font-semibold mt-2" th:text="'Price: $' + ${product.price}"></p>
+                    <a th:href="@{'/products/details/' + ${product.id}}" class="mt-4 inline-block px-4 py-2 bg-blue-500 rounded-lg text-white text-sm font-semibold hover:bg-blue-600">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- No Products Found -->
+        <div class="text-center py-16" th:if="${products.size() == 0}">
+            <h2 class="text-2xl font-semibold text-gray-800">No products found in this category.</h2>
+            <p class="text-gray-600 mt-2">Check back later or explore other categories.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-zinc-800 py-8 text-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <div class="text-lg font-bold mb-2">CarRental<span class="text-red-500">.</span></div>
+        <p>&copy; 2024 CarRental. All rights reserved.</p>
+        <div class="mt-4 flex justify-center space-x-4">
+            <a href="#" class="hover:text-red-500">Privacy Policy</a>
+            <a href="#" class="hover:text-red-500">Terms of Service</a>
+            <a href="#" class="hover:text-red-500">Contact</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
