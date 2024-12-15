@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental | Drive Your Dream</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+<!-- Navbar -->
+<nav class="bg-zinc-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center py-4">
+        <div class="text-3xl font-bold text-white">
+            <a href="/">CarRental<span class="text-red-500">.</span></a>
+        </div>
+        <!-- Menu for larger screens -->
+        <div class="hidden md:flex space-x-6 text-white">
+            <a href="/" class="hover:text-blue-400">Home</a>
+            <a th:href="@{/products}" class="hover:text-blue-400">Cars</a>
+            <a th:href="@{/about}" class="hover:text-blue-400">About</a>
+            <a th:href="@{/contact}" class="hover:text-blue-400">Contact</a>
+            <a th:href="@{/login}" class="hover:text-blue-400">Login</a>
+            <a href="/" class="hover:text-blue-400">Profile</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="md:hidden text-white">
+            <button id="menu-btn">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-gray-700">
+        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Home</a>
+        <a th:href="@{/cars}" class="block px-4 py-2 text-white hover:bg-gray-600">Cars</a>
+        <a th:href="@{/about}" class="block px-4 py-2 text-white hover:bg-gray-600">About</a>
+        <a th:href="@{/contact}" class="block px-4 py-2 text-white hover:bg-gray-600">Contact</a>
+        <a th:href="@{/login}" class="block px-4 py-2 text-white hover:bg-gray-600">Login</a>
+        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Profile</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative bg-cover bg-center h-screen" style="background-image: url('https://images.pexels.com/photos/2127038/pexels-photo-2127038.jpeg?auto=compress&cs=tinysrgb&w=600');">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center text-white flex flex-col justify-center h-full">
+        <h1 class="text-5xl font-extrabold">Drive Your Dream Car Today</h1>
+        <p class="mt-4 text-lg">Explore the best selection of rental cars at unbeatable prices.</p>
+        <a th:href="@{/products}" class="mt-6 rounded-full inline-block px-8 py-3 bg-gradient-to-r from-zinc-600 text-white text-lg font-semibold hover:bg-gray-300">Browse Cars</a>
+    </div>
+</section>
+
+
+<!-- Why Choose Us -->
+<section class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-gray-800">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <!-- Feature 1 -->
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <svg class="w-12 h-12 mx-auto text-zinc-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+                <h3 class="text-xl font-semibold">Wide Range of Cars</h3>
+                <p class="mt-2 text-gray-600">From economy to luxury cars, we have it all.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <svg class="w-12 h-12 mx-auto text-zinc-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <h3 class="text-xl font-semibold">Affordable Pricing</h3>
+                <p class="mt-2 text-gray-600">Get the best deals with no hidden fees.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <svg class="w-12 h-12 mx-auto text-gray-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4m16 0l-6 6m6-6l-6-6" />
+                </svg>
+                <h3 class="text-xl font-semibold">Easy Booking</h3>
+                <p class="mt-2 text-gray-600">Book your car in just a few clicks.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="py-16 bg-white">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mt-12">
+        <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden" th:each="category : ${categories}">
+            <img th:src="${category.imageUrl}" alt="Category Image" class="w-full h-40 object-cover">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800" th:text="${category.name}"></h3>
+                <p class="text-gray-600">Explore all products</p>
+                <a th:href="@{/products/{id}(id=${category.id})}" class="mt-4 inline-block px-4 py-2 bg-zinc-400 rounded-lg text-white text-sm font-semibold hover:bg-zinc-800">
+                    View Products
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-zinc-800 py-6">
+    <div class="max-w-7xl mx-auto text-center text-white">
+        <p>&copy; 2024 CarRental. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>

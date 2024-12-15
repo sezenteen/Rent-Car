@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Харилцагч</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Харилцагчийн жагсаалт</h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-scroll">
+            <li class="breadcrumb-item">
+                <a class="text-gray-700" href="/static">
+                    Нүүр хуудас
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                Харилцагч
+            </li>
+        </ol>
+    </nav>
+    <a class="btn btn-primary" th:href="@{/customers/new}">Нэмэх</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>cityRegion</th>
+            <th>ccNumber</th>
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.email}"></td>
+            <td th:text="${customer.phone}"></td>
+            <td th:text="${customer.address}"></td>
+            <td th:text="${customer.cityRegion}"></td>
+            <td th:text="${customer.ccNumber}"></td>
+
+            <td>
+                <a class="btn btn-primary" th:href="@{/customers/edit/{id}(id=${customer.id})}">Edit</a>
+                <a class="btn btn-danger" th:href="@{/customers/delete/{id}(id=${customer.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

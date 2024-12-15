@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center mb-6">Бүртгүүлэх</h2>
+
+        <form th:action="@{/register}" method="post">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="firstName">Овог</label>
+                <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Enter your firstName "
+                />
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="lastName">Нэр</label>
+                <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Enter your lastName "
+                />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="age">Нас</label>
+                <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Enter your lastName "
+                />
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Нэвтрэх нэр</label>
+                <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Enter your lastName "
+                />
+            </div>
+
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+                <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Create a password"
+                />
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">Confirm Password</label>
+                <input
+                        type="password"
+                        id="confirm-password"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Confirm your password"
+                />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Хэрэглэгчийн эрх</label>
+                <select  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="roles" multiple>
+                    <option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Түвшин</label>
+                <select  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="level">
+                    <option th:each="level: ${levels}" th:value="${level}" th:text="${level}">
+                    </option>
+                </select>
+            </div>
+
+
+            <div class="mb-4">
+                <button
+                        type="submit"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                    Бүртгүүлэх
+                </button>
+            </div>
+        </form>
+
+        <p class="text-center text-sm text-gray-600">Танд бүртгэл байгаа юу?
+            <a class="text-blue-500 hover:text-blue-700" href="/login">Нэвтрэх хэсэг</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

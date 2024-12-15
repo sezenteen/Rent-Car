@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Toggle Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Add smooth transition to the menu */
+        .menu-transition {
+            transition: max-height 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <div class="text-2xl font-bold text-gray-800">
+                MySite
+            </div>
+            <!-- Toggle Button for Mobile -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Menu Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-800 hover:text-gray-600">Home</a>
+                <a href="#" class="text-gray-800 hover:text-gray-600">About</a>
+                <a href="#" class="text-gray-800 hover:text-gray-600">Services</a>
+                <a href="#" class="text-gray-800 hover:text-gray-600">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="max-h-0 overflow-hidden menu-transition md:hidden bg-gray-100">
+        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Home</a>
+        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">About</a>
+        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Services</a>
+        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Contact</a>
+    </div>
+</nav>
+<!-- Hero Section -->
+<section class="relative bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center" style="background-image: url('https://source.unsplash.com/1600x900/?nature,water');">
+    <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Dark overlay -->
+
+    <div class="relative z-10 text-center text-white px-4 md:px-10 lg:px-20">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">Experience the Beauty of Nature</h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-8">Discover breathtaking landscapes and explore new horizons.</p>
+        <a href="#" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
+            Get Started
+        </a>
+    </div>
+</section>
+
+
+<!-- Footer Section -->
+<footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            <!-- Company Information -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">About Us</h3>
+                <p class="text-gray-400">
+                    We are an innovative company providing the best quality products and services to our customers globally.
+                </p>
+                <p class="mt-4">
+                    <span class="block text-gray-400">Email:</span>
+                    <a href="mailto:info@company.com" class="text-gray-300 hover:text-white">info@company.com</a>
+                </p>
+                <p class="mt-2">
+                    <span class="block text-gray-400">Phone:</span>
+                    <a href="tel:+1234567890" class="text-gray-300 hover:text-white">+123 456 7890</a>
+                </p>
+            </div>
+
+            <!-- Useful Links -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Services</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media Links -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                <ul class="flex space-x-4">
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 4.56v14.91A4.53 4.53 0 0119.44 24H4.56A4.53 4.53 0 010 19.47V4.56A4.53 4.53 0 014.56 0h14.89A4.53 4.53 0 0124 4.56zM8.61 17.49V9.69H5.68v7.8zm1.47-7.8h-1.5v-1.52h1.5zm10.42 7.8v-4.28c0-1.36-.23-2.42-1.59-2.42-1.38 0-1.6 1.35-1.6 2.32v4.38h-2.94V9.69h2.82v1.2h.03a3.16 3.16 0 012.85-1.62c3.07 0 3.63 1.91 3.63 4.4v4.82z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.23 0H1.77A1.77 1.77 0 000 1.77v20.46A1.77 1.77 0 001.77 24h11v-8.68H9.94v-3.4H12.8V9.24c0-3.26 1.93-5.04 4.9-5.04 1.43 0 2.93.22 2.93.22v3.23h-1.65c-1.63 0-2.15.95-2.15 2.06v2.42h3.64l-.58 3.4h-3.06V24h6A1.77 1.77 0 0024 22.23V1.77A1.77 1.77 0 0022.23 0z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.5 0H4.5C2.02 0 0 2.02 0 4.5v15C0 21.98 2.02 24 4.5 24h15c2.48 0 4.5-2.02 4.5-4.5v-15C24 2.02 21.98 0 19.5 0zM9.85 18.4H7.56v-6.9h2.29v6.9zM8.7 9.98a1.33 1.33 0 01-1.34-1.34c0-.74.6-1.34 1.34-1.34s1.34.6 1.34 1.34a1.33 1.33 0 01-1.34 1.34zm10.18 8.42h-2.29v-3.72c0-.9-.02-2.06-1.25-2.06-1.25 0-1.44 1-1.44 2v3.78H11.7v-6.9h2.2v.94h.03c.31-.59 1.06-1.21 2.18-1.21 2.33 0 2.76 1.54 2.76 3.54v3.63z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Newsletter</h3>
+                <p class="text-gray-400 mb-4">
+                    Subscribe to receive the latest updates and offers.
+                </p>
+                <form>
+                    <input type="email" placeholder="Enter your email" class="w-full p-2 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button type="submit" class="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-md focus:outline-none">Subscribe</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 MyCompany. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    // Toggle the menu on button click
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('max-h-0');
+        mobileMenu.classList.toggle('max-h-screen');
+    });
+</script>
+
+</body>
+</html>

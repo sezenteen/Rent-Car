@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Засах</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Бүтээгдэхүүний мэдээлэл засварлах</h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-scroll">
+            <li class="breadcrumb-item">
+                <a class="text-gray-700" href="/">
+                    Нүүр хуудас
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a class="text-gray-700" href="/product/products">
+                    Бүтээгдэхүүн
+                </a>
+
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                Засах
+            </li>
+        </ol>
+    </nav>
+    <form th:action="@{/product/{id}(id=${product.id})}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="name">Нэр:</label>
+            <input type="text" id="name" class="form-control" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="price">Үнэ:</label>
+            <input type="text" id="price" class="form-control" th:field="*{price}">
+        </div>
+        <div class="form-group">
+            <label for="description">Дэлгэрэнгүй:</label>
+            <input type="text" id="description" class="form-control" th:field="*{description}">
+        </div>
+
+        <div class="form-group">
+            <label for="category_id">Ангилал: </label>
+            <input type="text" id="category_id" class="form-control" th:field="*{category}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Засварлах</button>
+        <a class="btn" th:href="@{/product}">Буцах</a>
+    </form>
+</div>
+</body>
+</html>

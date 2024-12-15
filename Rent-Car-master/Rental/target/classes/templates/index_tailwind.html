@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
+<!--    <link href="./css/output.css" rel="stylesheet">-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+<body>
+<header class="bg-amber-50">
+    <nav class="flex justify-center items-center w-[95%] mx-auto bg-amber-200">
+        <div>
+            <img class="w-16" src="./img/logo_titem.png" alt="">
+        </div>
+        <div class="nav-links duration-500 md:static absolute bg-amber-200 md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full items-center px-5">
+            <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-6">
+                <li><a class="hover:text-gray-500" href="#">Нүүр хуудас</a></li>
+                <li><a class="hover:text-gray-500" href="#">Үйлчилгээ</a></li>
+                <li><a class="hover:text-gray-500" href="#">Бүтээгдэхүүн</a></li>
+                <li><a class="hover:text-gray-500" href="#">Бидний тухай</a></li>
+            </ul>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="bg-[#a6c1ee] text-gray-50 px-5 py-2 rounded-full hover:bg-blue-900">Нэвтрэх</button>
+            <box-icon onclick="onToggleMenu(this)" name='menu' class="text-3xl cursor-pointer md:hidden" ></box-icon>
+        </div>
+
+    </nav>
+</header>
+<div class="bg-gray-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+            <h2 class="text-2xl font-bold text-gray-900">Collections</h2>
+
+            <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                <div class="group relative">
+                    <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                        <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg"
+                             alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                             class="h-full w-full object-cover object-center">
+                    </div>
+                    <h3 class="mt-6 text-sm text-gray-500">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            Desk and Office
+                        </a>
+                    </h3>
+                    <p class="text-base font-semibold text-gray-900">Work from home accessories</p>
+                </div>
+                <div class="group relative">
+                    <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                        <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg"
+                             alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
+                             class="h-full w-full object-cover object-center">
+                    </div>
+                    <h3 class="mt-6 text-sm text-gray-500">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            Self-Improvement
+                        </a>
+                    </h3>
+                    <p class="text-base font-semibold text-gray-900">Journals and note-taking</p>
+                </div>
+                <div class="group relative">
+                    <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                        <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg"
+                             alt="Collection of four insulated travel bottles on wooden shelf."
+                             class="h-full w-full object-cover object-center">
+                    </div>
+                    <h3 class="mt-6 text-sm text-gray-500">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            Travel
+                        </a>
+                    </h3>
+                    <p class="text-base font-semibold text-gray-900">Daily commute essentials</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function onToggleMenu(e){
+        const navLinks = document.querySelector('.nav-links')
+        e.name=e.name === 'menu' ? 'close': 'menu';
+        navLinks.classList.toggle('top-[9%]')
+    }
+</script>

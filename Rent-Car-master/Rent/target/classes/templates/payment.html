@@ -1,0 +1,24 @@
+<table class="table-auto w-full bg-white shadow-lg rounded-lg">
+    <thead class="bg-gray-200">
+        <tr class="text-left">
+            <th class="px-4 py-2">Payment ID</th>
+            <th class="px-4 py-2">Customer</th>
+            <th class="px-4 py-2">Amount</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="payment : ${pendingPayments}" class="border-t hover:bg-gray-100">
+            <td class="px-4 py-2" th:text="${payment.id}"></td>
+            <td class="px-4 py-2" th:text="${payment.customer.name}"></td>
+            <td class="px-4 py-2" th:text="${payment.amount}"></td>
+            <td class="px-4 py-2" th:text="${payment.status}"></td>
+            <td class="px-4 py-2">
+                <a href="/admin/payments/approve/{id}" 
+                   class="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600">Approve</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
