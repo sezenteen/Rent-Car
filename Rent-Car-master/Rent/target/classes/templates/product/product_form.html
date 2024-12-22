@@ -2,63 +2,113 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Бүтээгдэхүүн нэмэх</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+        h2 {
+            color: #343a40;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: 600;
+        }
+        .breadcrumb {
+            background-color: transparent;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Бүтээгдэхүүн нэмэх..</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-scroll">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="mt-4">
+        <ol class="breadcrumb bg-white p-2 shadow-sm rounded">
             <li class="breadcrumb-item">
-                <a class="text-gray-700" href="/">
-                    Нүүр хуудас
-                </a>
+                <a class="text-primary" href="/">Нүүр хуудас</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                <a class="text-gray-700" href="/products">
-                    Бүтээгдэхүүн
-                </a>
-
+            <li class="breadcrumb-item">
+                <a class="text-primary" href="/products">Бүтээгдэхүүн</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                Шинэ
-            </li>
+            <li class="breadcrumb-item active text-dark" aria-current="page">Шинэ</li>
         </ol>
     </nav>
-    <form th:action="@{/product}"  method="POST">
-        <div th:object="${product}">
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <h2 class="text-center">Шинэ бүтээгдэхүүн нэмэх</h2>
+        <form th:action="@{/product}" method="POST" th:object="${product}">
+            <!-- Product Name -->
             <div class="form-group">
                 <label for="name">Нэр:</label>
-                <input type="text" id="name" class="form-control" th:field="*{name}">
-
-                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">нэр талбар дээр алдаа гарлаа</small>
-<!--                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>-->
-
+                <input type="text" id="name" class="form-control" placeholder="Бүтээгдэхүүний нэр" th:field="*{name}">
+                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
             </div>
+
+            <!-- Price -->
             <div class="form-group">
                 <label for="price">Үнэ:</label>
-                <input type="text" id="price" class="form-control" th:field="*{price}" name="price">
-                <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">price талбар дээр алдаа гарлаа</small>
+                <input type="number" step="0.01" id="price" class="form-control" placeholder="Бүтээгдэхүүний үнэ" th:field="*{price}">
+                <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></small>
             </div>
+
+            <!-- Description -->
             <div class="form-group">
                 <label for="description">Дэлгэрэнгүй:</label>
-                <input type="text" id="description" class="form-control" th:field="*{description}" name="description">
-                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger">description талбар дээр алдаа гарлаа</small>
+                <textarea id="description" rows="3" class="form-control" placeholder="Бүтээгдэхүүний дэлгэрэнгүй" th:field="*{description}"></textarea>
+                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></small>
+            </div>
+
+            <!-- Category -->
+            <div class="form-group">
+                <label for="category_id">Ангилал:</label>
+                <select id="category_id" class="form-control" th:field="*{category}">
+                    <option value="" disabled selected>Ангилал сонгоно уу</option>
+                    <option th:each="cat : ${categories}"
+                            th:value="${cat.id}"
+                            th:text="${cat.name}"></option>
+                </select>
+                <small th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger"></small>
             </div>
 
             <div class="form-group">
-                <label for="category_id">Ангилал код: </label>
-                <input type="text" id="category_id" class="form-control" th:field="*{category}" name="category">
-                <small th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger">category талбар дээр алдаа гарлаа</small>
+                <label for="imageUrl">Зургийн URL:</label>
+                <input type="text" id="imageUrl" class="form-control" th:field="*{imageUrl}"
+                       th:placeholder="${product.id == null ? 'Зураг оруулна уу' : 'Хоосон орхисон тохиолдолд зураг өөрчлөгдөхгүй'}">
+                <small th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="text-danger"></small>
             </div>
 
 
-        </div>
-        <button type="submit" class="btn btn-primary">Нэмэх</button>
-        <a class="btn" th:href="@{/product}">Буцах</a>
-
-    </form>
+            <!-- Buttons -->
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary mr-2">Нэмэх</button>
+                <a class="btn btn-secondary" th:href="@{/products}">Буцах</a>
+            </div>
+        </form>
+    </div>
 </div>
+
+<!-- Bootstrap JS and Dependencies -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

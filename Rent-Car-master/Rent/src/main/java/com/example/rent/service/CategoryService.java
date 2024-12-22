@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CategoryService {
+
     List<Category> findByCategoryName(String name);
+
     List<Category> getAllCategories();
 
     //    Neg hereglechiin medeelel hadgalah
@@ -23,9 +25,5 @@ public interface CategoryService {
 
     //    Neg hereglegchiin medeelel ustgah
     public String deleteCategoryById(Long id);
-
-
-
-
 
 }

@@ -45,7 +45,7 @@ public class Product extends BaseEntity {
     }
 
     @NotBlank(message = "Бүтээгдэхүүний тайлбар оруулна уу!")
-    @Size(min = 10, max = 200, message = "10-аас 200 тэмдэгтэд багтааж тайлбар оруулна уу!")
+    @Size(min = 4, max = 200, message = "4-өөс 200 тэмдэгтэд багтааж тайлбар оруулна уу!")
     @Column(columnDefinition = "Text")
     public String getDescription() {
         return description;

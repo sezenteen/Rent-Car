@@ -3,6 +3,7 @@ package com.example.rent.service.Implement;
 import com.example.rent.model.Product;
 import com.example.rent.repository.ProductRepository;
 import com.example.rent.service.ProductService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public List<Product> createProducts(List<Product> products) {
         return productRepository.saveAll(products);
     }

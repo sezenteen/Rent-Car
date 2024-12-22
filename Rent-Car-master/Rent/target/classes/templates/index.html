@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental | Drive Your Dream</title>
+    <title>Car Rental</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/output.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
 <!-- Navbar -->
@@ -15,12 +16,12 @@
         </div>
         <!-- Menu for larger screens -->
         <div class="hidden md:flex space-x-6 text-white">
-            <a href="/" class="hover:text-blue-400">Home</a>
+            <a th:href="@{/}" class="hover:text-blue-400">Home</a>
             <a th:href="@{/products}" class="hover:text-blue-400">Cars</a>
             <a th:href="@{/about}" class="hover:text-blue-400">About</a>
             <a th:href="@{/contact}" class="hover:text-blue-400">Contact</a>
             <a th:href="@{/login}" class="hover:text-blue-400">Login</a>
-            <a href="/" class="hover:text-blue-400">Profile</a>
+            <a th:href="@{/}" class="hover:text-blue-400">Account</a>
         </div>
         <!-- Hamburger Menu -->
         <div class="md:hidden text-white">
@@ -33,12 +34,12 @@
     </div>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden bg-gray-700">
-        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Home</a>
+        <a th:href="@{/}" class="block px-4 py-2 text-white hover:bg-gray-600">Home</a>
         <a th:href="@{/cars}" class="block px-4 py-2 text-white hover:bg-gray-600">Cars</a>
         <a th:href="@{/about}" class="block px-4 py-2 text-white hover:bg-gray-600">About</a>
         <a th:href="@{/contact}" class="block px-4 py-2 text-white hover:bg-gray-600">Contact</a>
         <a th:href="@{/login}" class="block px-4 py-2 text-white hover:bg-gray-600">Login</a>
-        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-600">Profile</a>
+        <a th:href="@{/admin}" class="block px-4 py-2 text-white hover:bg-gray-600">Profile</a>
     </div>
 </nav>
 
